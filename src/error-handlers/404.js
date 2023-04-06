@@ -1,6 +1,9 @@
-function notFound(req, res, next) {
-    res.status(404).send('Not Found');
+function handle404(req, res, next) {
+  if (!res.headersSent) {
+    res.status(404).json({ error: 'Not Found' });
+  } else {
+    next();
   }
-  
-  module.exports = notFound;
-  
+}
+
+module.exports = handle404;

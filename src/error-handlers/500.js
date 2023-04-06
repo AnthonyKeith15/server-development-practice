@@ -1,8 +1,6 @@
-function internalError(req, res, next) {
-    req.status(500);
-    res.json({
-        error: '500 Error Code',
-    });
-}
-
-module.exports = internalError;
+function handle500(err, req, res, next) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+  
+  module.exports = handle500;
+  
